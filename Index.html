@@ -1,0 +1,690 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport
+      content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+    <title>शुभ विवाह निमन्त्रणा</title>
+    <meta name="claude:viewport-fit-sides" content="cover">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Tiro+Devanagari+Hindi&family=Tiro+Devanagari+Sanskrit&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+    <style>
+  /* Layout: one tall card. Closed = two red doors with Ganesh and the mantra; opened = ivory page that grows to full length while the invitation writes itself word by word. */
+  :root {
+    --wine: #2a060b;
+    --wine-2: #4a0a14;
+    --red: #8a1224;
+    --sindoor: #b5121b;
+    --gold: #d9a441;
+    --gold-hi: #f8dc90;
+    --gold-lo: #8a5f12;
+    --ivory: #fbf1d9;
+    --ivory-2: #f1dfb2;
+    --ink-soft: #6a3a22;
+    --gl: #6e4a0e;
+    --f-display: "Yatra One", "Noto Serif Devanagari", "FreeSerif", serif;
+    --f-body: "Tiro Devanagari Hindi", "Noto Serif Devanagari", "FreeSerif", serif;
+    --f-sans: "Tiro Devanagari Sanskrit", "Tiro Devanagari Hindi", "Noto Serif Devanagari", "FreeSerif", serif;
+    --f-latin: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--wine); overflow-x: clip; }
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, #5c0f1c 0%, rgba(92,15,28,0) 70%),
+      var(--wine);
+    color: var(--gold-hi);
+    font-family: var(--f-body);
+    padding-block: 28px 56px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    overflow-x: clip;
+  }
+  .stage { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+
+  /* ---------- card shell ---------- */
+  .card {
+    --w: max(300px, min(460px, 100vw - 32px, (100svh - 120px) / 1.48));
+    width: var(--w);
+    height: calc(var(--w) * 1.48);
+    position: relative;
+    container-type: inline-size;
+    perspective: 1800px;
+    transition: height 1.2s cubic-bezier(.5, 0, .2, 1);
+    filter: drop-shadow(0 24px 40px rgba(0,0,0,.55));
+  }
+  .paper {
+    position: absolute; inset: 0;
+    overflow: hidden;
+    border-radius: 1.2cqw;
+    background: var(--ivory);
+  }
+
+  /* ---------- doors ---------- */
+  .door {
+    position: absolute; top: 0; height: 148cqw; width: 50%;
+    transform-style: preserve-3d;
+    transition: transform 1.6s cubic-bezier(.65, .02, .2, 1), opacity .5s ease 1.1s, visibility 0s linear 1.7s;
+    z-index: 3;
+  }
+  .door-l { left: 0; transform-origin: 0 50%; }
+  .door-r { right: 0; transform-origin: 100% 50%; }
+  .face { position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .face.back {
+    transform: rotateY(180deg);
+    background: linear-gradient(180deg, #6b0d1b, #4a0a14);
+    border: 1.2cqw solid #7a0f1d;
+  }
+  .face.back::after { content: ""; position: absolute; inset: 3cqw; border: 1px solid rgba(217,164,65,.55); }
+  .door-l .face.front .cover { margin-left: 0; }
+  .door-r .face.front .cover { margin-left: -50cqw; }
+  .card:not(.open):not(.opening):hover .door-l, .card:not(.open):not(.opening):focus-within .door-l { transform: rotateY(-5deg); }
+  .card:not(.open):not(.opening):hover .door-r, .card:not(.open):not(.opening):focus-within .door-r { transform: rotateY(5deg); }
+  .card.open .door-l { transform: rotateY(-104deg); opacity: 0; visibility: hidden; }
+  .card.open .door-r { transform: rotateY(104deg); opacity: 0; visibility: hidden; }
+
+  /* ---------- cover (cloned into both doors) ---------- */
+  .cover {
+    position: relative;
+    width: 100cqw; height: 148cqw;
+    background:
+      radial-gradient(ellipse 60% 34% at 50% 27%, rgba(248,200,110,.28), rgba(248,200,110,0) 70%),
+      radial-gradient(circle at 50% 38%, #a3182b 0%, #7a0f1d 58%, #560912 100%);
+    color: var(--gold-hi);
+    text-align: center;
+  }
+  .cover .frame { position: absolute; inset: 2.4cqw; border: 0.5cqw solid var(--gold); }
+  .cover .frame::after { content: ""; position: absolute; inset: 0.9cqw; border: 1px solid rgba(248,220,144,.6); }
+  .band { position: absolute; left: 3.3cqw; width: calc(100% - 6.6cqw); height: 5.2cqw; display: block; }
+  .band.t { top: 3.3cqw; } .band.b { bottom: 3.3cqw; }
+  .corner { position: absolute; width: 17cqw; height: 17cqw; color: var(--gold); }
+  .corner.tl { left: 8.6cqw; top: 8.6cqw; }
+  .corner.tr { right: 8.6cqw; top: 8.6cqw; transform: scaleX(-1); }
+  .corner.bl { left: 8.6cqw; bottom: 8.6cqw; transform: scaleY(-1); }
+  .corner.br { right: 8.6cqw; bottom: 8.6cqw; transform: scale(-1, -1); }
+  .cover .ganesh { position: absolute; left: 50%; top: 11cqw; width: 46cqw; height: 50cqw; transform: translateX(-50%); }
+  .cover .nama { position: absolute; left: 0; right: 0; top: 62cqw; font-family: var(--f-sans); font-size: 4.3cqw; color: var(--gold-hi); letter-spacing: .02em; }
+  .cover .mantra { position: absolute; left: 0; right: 0; top: 68cqw; font-family: var(--f-sans); line-height: 1.32; }
+  .cover .mantra .m1 { display: block; font-size: 6.8cqw; color: var(--gold-hi); text-shadow: 0 0.4cqw 0 rgba(60,5,10,.6); }
+  .cover .mantra .m2 { display: block; font-size: 4.8cqw; color: #f2cf79; }
+  .cover .title { position: absolute; left: 0; right: 0; top: 120cqw; font-family: var(--f-display); font-size: 9.6cqw; line-height: 1.1; color: var(--gold-hi); text-shadow: 0 0.5cqw 0 rgba(60,5,10,.65); }
+  .cover .sub { position: absolute; left: 0; right: 0; top: 133cqw; font-family: var(--f-latin); font-weight: 600; font-size: 3cqw; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); padding-left: .3em; }
+  .seam { position: absolute; top: 0; bottom: 0; left: 50%; width: 0; border-left: 1px solid rgba(0,0,0,.35); box-shadow: 0 0 1.4cqw 0.3cqw rgba(0,0,0,.35); z-index: 4; pointer-events: none; transition: opacity .3s; }
+  .card.open .seam, .card.opening .seam { opacity: 0; }
+
+  /* ---------- seal button ---------- */
+  .seal {
+    position: absolute; left: 50%; top: 110cqw; z-index: 5;
+    width: 15cqw; height: 15cqw; margin: -7.5cqw 0 0 -7.5cqw;
+    border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+    background: radial-gradient(circle at 35% 30%, #fff0b8, #e2ae48 45%, #a8731a 100%);
+    color: #5a0b14; font-family: var(--f-sans); font-size: 8.4cqw; line-height: 15cqw;
+    box-shadow: 0 0 0 0.7cqw rgba(60,5,10,.55), 0 0 0 1.1cqw var(--gold), 0 1cqw 2.4cqw rgba(0,0,0,.5);
+    transition: transform .5s cubic-bezier(.5,0,.2,1), opacity .5s;
+  }
+  .seal::before { content: ""; position: absolute; inset: -2.6cqw; border-radius: 50%; border: 1px solid var(--gold-hi); opacity: 0; animation: ping 2.6s ease-out infinite; }
+  .seal:hover { transform: scale(1.07); }
+  .seal:focus-visible { outline: 0.7cqw solid #fff; outline-offset: 1.6cqw; }
+  .card.opening .seal, .card.open .seal { transform: scale(.2) rotate(120deg); opacity: 0; pointer-events: none; }
+  @keyframes ping { 0% { transform: scale(.75); opacity: .85; } 80%, 100% { transform: scale(1.35); opacity: 0; } }
+
+  .halo-ticks { transform-origin: 120px 116px; animation: spin 90s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- inside page ---------- */
+  .inside {
+    position: relative; min-height: 148cqw;
+    padding: 11cqw 9cqw 12cqw;
+    text-align: center;
+    color: var(--red);
+    background:
+      radial-gradient(ellipse 80% 40% at 50% 0%, rgba(217,164,65,.22), rgba(217,164,65,0) 70%),
+      linear-gradient(180deg, var(--ivory), var(--ivory-2));
+  }
+  .inside .frame { position: absolute; inset: 2.4cqw; border: 0.5cqw solid var(--red); pointer-events: none; }
+  .inside .frame::after { content: ""; position: absolute; inset: 0.9cqw; border: 1px solid var(--gold-lo); opacity: .7; }
+  .inside .band.t { top: 3.3cqw; } .inside .band.b { bottom: 3.3cqw; }
+  .inside .corner { color: var(--gold-lo); width: 13cqw; height: 13cqw; }
+  .inside .corner.tl { left: 8.4cqw; top: 8.4cqw; } .inside .corner.tr { right: 8.4cqw; top: 8.4cqw; }
+  .inside .corner.bl { left: 8.4cqw; bottom: 8.4cqw; } .inside .corner.br { right: 8.4cqw; bottom: 8.4cqw; }
+
+  .copy { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(10px, 3.2cqw, 16px); padding-top: 4cqw; }
+  .copy .blk { width: 100%; }
+  .copy .g-small { width: 25cqw; height: 27.5cqw; margin: 0 auto -1cqw; display: block; --gl: #6e4a0e; opacity: 0; transform: scale(.9); }
+  .writing .g-small, .done .g-small { animation: pop 1s ease .1s both; }
+  @keyframes pop { to { opacity: 1; transform: scale(1); } }
+  .done .g-small { animation: none; opacity: 1; transform: none; }
+
+  .t-small { font-family: var(--f-sans); font-size: clamp(13px, 4cqw, 19px); color: var(--gold-lo); line-height: 1.7; }
+  .t-title { font-family: var(--f-display); font-size: clamp(30px, 11.5cqw, 54px); line-height: 1.1; color: var(--sindoor); }
+  .t-title.latin { font-family: var(--f-latin); font-weight: 600; font-style: italic; }
+  .t-p { font-size: clamp(14px, 4.15cqw, 19px); line-height: 1.85; color: var(--red); text-wrap: pretty; }
+  .t-role { font-family: var(--f-sans); font-size: clamp(12px, 3.6cqw, 17px); color: var(--gold-lo); line-height: 1.7; }
+  .t-name { font-family: var(--f-display); font-size: clamp(25px, 8.6cqw, 40px); line-height: 1.2; color: var(--sindoor); margin-top: .1em; }
+  .t-with { font-family: var(--f-display); font-size: clamp(17px, 5.4cqw, 26px); color: var(--gold-lo); }
+  .t-big { font-family: var(--f-display); font-size: clamp(21px, 6.6cqw, 31px); color: var(--sindoor); line-height: 1.3; }
+  .latin .w, .t-latin { font-family: var(--f-latin); }
+  .lang-en .t-p, .lang-en .t-small, .lang-en .t-role { font-family: var(--f-latin); font-weight: 500; }
+  .lang-en .t-p { font-size: clamp(16px, 4.7cqw, 22px); line-height: 1.55; }
+  .lang-en .t-small, .lang-en .t-role { font-size: clamp(14px, 4.1cqw, 19px); letter-spacing: .04em; }
+  .lang-en .t-name, .lang-en .t-with, .lang-en .t-big, .lang-en .t-title { font-family: var(--f-latin); font-weight: 600; font-style: italic; }
+  .lang-en .t-title { font-size: clamp(36px, 13cqw, 60px); }
+  .lang-en .t-name { font-size: clamp(30px, 10cqw, 46px); }
+
+  .rows { display: grid; gap: 0; border-top: 1px solid rgba(138,95,18,.45); }
+  .row { display: flex; flex-direction: column; gap: .1em; padding: clamp(8px, 2.6cqw, 13px) 0; border-bottom: 1px solid rgba(138,95,18,.45); }
+  .row .k { font-family: var(--f-sans); font-size: clamp(11px, 3.2cqw, 15px); color: var(--gold-lo); letter-spacing: .06em; }
+  .row .v { font-family: var(--f-display); font-size: clamp(16px, 5cqw, 23px); color: var(--red); line-height: 1.4; }
+  .lang-en .row .k { font-family: var(--f-latin); font-weight: 600; text-transform: uppercase; letter-spacing: .22em; font-size: clamp(11px, 3.1cqw, 14px); }
+  .lang-en .row .v { font-family: var(--f-latin); font-weight: 600; font-size: clamp(19px, 5.7cqw, 26px); }
+
+  .orn { display: block; width: 46cqw; height: 5cqw; margin: 0 auto; color: var(--gold-lo); }
+  .orn path, .orn circle { fill: none; stroke: currentColor; stroke-width: 1.3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .orn .dot { fill: currentColor; stroke: none; stroke-dasharray: none; opacity: 0; }
+  .writing .orn path { animation: draw 1.1s ease both; animation-delay: var(--d); }
+  .writing .orn .dot { animation: pop 0.5s ease both; animation-delay: var(--d); }
+  .done .orn path { animation: none; stroke-dashoffset: 0; }
+  .done .orn .dot { animation: none; opacity: 1; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  /* handwriting reveal: each word is wiped in left to right, one after another */
+  .w {
+    display: inline-block;
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 40%, transparent 60%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 40%, transparent 60%, transparent 100%);
+    -webkit-mask-size: 250% 100%; mask-size: 250% 100%;
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    -webkit-mask-position: 100% 0; mask-position: 100% 0;
+    padding: .15em .04em;
+  }
+  .writing .w { animation: wipe .55s linear both; animation-delay: var(--d); }
+  .done .w { animation: none; -webkit-mask-position: 0 0; mask-position: 0 0; }
+  @keyframes wipe { from { -webkit-mask-position: 100% 0; mask-position: 100% 0; } to { -webkit-mask-position: 0 0; mask-position: 0 0; } }
+
+  /* ---------- below the card ---------- */
+  .hint { margin: 0; text-align: center; font-family: var(--f-sans); font-size: 15px; color: var(--gold); line-height: 1.6; transition: opacity .5s; }
+  .hint span { display: block; font-family: var(--f-latin); font-weight: 600; letter-spacing: .28em; text-transform: uppercase; font-size: 12px; color: rgba(248,220,144,.7); }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
+  .controls.show { opacity: 1; pointer-events: auto; }
+  .chip {
+    font: 600 14px/1 var(--f-latin); letter-spacing: .08em;
+    color: var(--gold-hi); background: rgba(248,220,144,.08);
+    border: 1px solid rgba(248,220,144,.4); border-radius: 999px;
+    padding: 11px 18px; cursor: pointer; min-height: 44px;
+  }
+  .chip[aria-pressed="true"] { background: var(--gold); color: #3a0710; border-color: var(--gold); }
+  .chip:hover { border-color: var(--gold-hi); }
+  .chip:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .chip.ne { font-family: var(--f-sans); font-size: 15px; letter-spacing: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .door, .card { transition-duration: .01s; transition-delay: 0s; }
+    .halo-ticks, .seal::before { animation: none; }
+    .w { animation: none !important; -webkit-mask-position: 0 0; mask-position: 0 0; }
+  }
+</style>
+
+    <!-- shared drawing defs -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"
+      focusable="false">
+      <defs>
+        <lineargradient id="goldG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fbe6a2" /><stop offset=".55"
+            stop-color="#e0ab45" /><stop offset="1" stop-color="#b8801f" />
+        </lineargradient>
+        <!-- dhaka-topi inspired band -->
+        <pattern id="dhakaR" width="20" height="20"
+          patternUnits="userSpaceOnUse" patternTransform="scale(.52)">
+          <rect width="20" height="20" fill="#5a0912" />
+          <polygon points="10,1.5 18.5,10 10,18.5 1.5,10" fill="none"
+            stroke="#d9a441" stroke-width="1.4" />
+          <polygon points="10,6.2 13.8,10 10,13.8 6.2,10" fill="#f8dc90" />
+          <polygon points="0,0 5,0 0,5" fill="#d9a441" /><polygon
+            points="20,0 15,0 20,5" fill="#d9a441" />
+          <polygon points="0,20 5,20 0,15" fill="#d9a441" /><polygon
+            points="20,20 15,20 20,15" fill="#d9a441" />
+        </pattern>
+        <pattern id="dhakaI" width="20" height="20"
+          patternUnits="userSpaceOnUse" patternTransform="scale(.52)">
+          <rect width="20" height="20" fill="#f6e7c0" />
+          <polygon points="10,1.5 18.5,10 10,18.5 1.5,10" fill="none"
+            stroke="#8a1224" stroke-width="1.4" />
+          <polygon points="10,6.2 13.8,10 10,13.8 6.2,10" fill="#b5121b" />
+          <polygon points="0,0 5,0 0,5" fill="#8a5f12" /><polygon
+            points="20,0 15,0 20,5" fill="#8a5f12" />
+          <polygon points="0,20 5,20 0,15" fill="#8a5f12" /><polygon
+            points="20,20 15,20 20,15" fill="#8a5f12" />
+        </pattern>
+
+        <symbol id="corner" viewBox="0 0 60 60">
+          <g fill="none" stroke="currentColor" stroke-width="1.3"
+            stroke-linecap="round">
+            <path d="M14 0 A14 14 0 0 1 0 14" /><path
+              d="M28 0 A28 28 0 0 1 0 28" /><path d="M42 0 A42 42 0 0 1 0 42" />
+            <path d="M5 1.4 L10 7" /><path d="M16 1.5 L20 12" /><path
+              d="M28 4 L36 16" />
+            <path d="M1.4 5 L7 10" /><path d="M1.5 16 L12 20" /><path
+              d="M4 28 L16 36" />
+          </g>
+          <circle cx="30" cy="30" r="2.6" fill="currentColor" />
+          <circle cx="8" cy="8" r="2.6" fill="currentColor" />
+        </symbol>
+
+        <!-- Ganesh, seated on a lotus with four arms and a halo -->
+        <symbol id="ganesh" viewBox="0 0 240 272">
+          <g class="halo-ticks">
+            <circle cx="120" cy="116" r="108" fill="none" stroke="url(#goldG)"
+              stroke-width="7" stroke-dasharray="1.6 9.2" />
+          </g>
+          <circle cx="120" cy="116" r="100" fill="none" stroke="url(#goldG)"
+            stroke-width="2.2" />
+          <circle cx="120" cy="116" r="94" fill="none" stroke="url(#goldG)"
+            stroke-width=".8" opacity=".7" />
+
+          <!-- lotus seat -->
+          <g fill="#f8e3a0" stroke="var(--gl)" stroke-width="1.3"
+            stroke-linejoin="round">
+            <path transform="rotate(-78 120 262)"
+              d="M120 262 C98 250 98 226 120 212 C142 226 142 250 120 262Z" />
+            <path transform="rotate(78 120 262)"
+              d="M120 262 C98 250 98 226 120 212 C142 226 142 250 120 262Z" />
+            <path transform="rotate(-56 120 262)"
+              d="M120 262 C98 250 98 226 120 212 C142 226 142 250 120 262Z" />
+            <path transform="rotate(56 120 262)"
+              d="M120 262 C98 250 98 226 120 212 C142 226 142 250 120 262Z" />
+            <path transform="rotate(-30 120 262)"
+              d="M120 262 C98 250 98 226 120 212 C142 226 142 250 120 262Z" />
+            <path transform="rotate(30 120 262)"
+              d="M120 262 C98 250 98 226 120 212 C142 226 142 250 120 262Z" />
+            <path
+              d="M120 266 C98 254 98 230 120 216 C142 230 142 254 120 266Z" />
+          </g>
+
+          <!-- ears -->
+          <g transform="translate(120 104) scale(.84) translate(-120 -104)">
+            <g fill="url(#goldG)" stroke="var(--gl)" stroke-width="1.7"
+              stroke-linejoin="round">
+              <path d="M86 82 C46 58 10 82 14 120 C17 152 56 164 90 136 Z" />
+              <path
+                d="M154 82 C194 58 230 82 226 120 C223 152 184 164 150 136 Z" />
+            </g>
+            <g fill="#b5121b" opacity=".55">
+              <path d="M82 92 C54 76 28 92 31 118 C33 140 58 148 84 128 Z" />
+              <path
+                d="M158 92 C186 76 212 92 209 118 C207 140 182 148 156 128 Z" />
+            </g>
+          </g>
+
+          <!-- torso -->
+          <path
+            d="M70 134 C58 172 64 210 120 216 C176 210 182 172 170 134 C150 122 90 122 70 134Z"
+            fill="url(#goldG)" stroke="var(--gl)" stroke-width="1.6" />
+          <ellipse cx="120" cy="174" rx="38" ry="40" fill="none"
+            stroke="var(--gl)" stroke-width="1" opacity=".5" />
+          <path d="M80 132 C86 182 130 202 164 208" fill="none" stroke="#b5121b"
+            stroke-width="3" stroke-linecap="round" />
+          <circle cx="120" cy="190" r="4" fill="#b5121b" stroke="var(--gl)"
+            stroke-width="1" />
+
+          <!-- crossed legs in dhoti -->
+          <path
+            d="M42 234 C40 208 78 198 120 206 C162 198 200 208 198 234 C198 250 160 254 120 252 C80 254 42 250 42 234Z"
+            fill="#b5121b" stroke="var(--gl)" stroke-width="1.6" />
+          <g fill="none" stroke="#f8dc90" stroke-width="1.3"
+            stroke-linecap="round" opacity=".85">
+            <path d="M56 232 C80 226 100 228 120 236" />
+            <path d="M184 232 C160 226 140 228 120 236" />
+            <path d="M60 244 C90 240 105 242 120 246" />
+            <path d="M180 244 C150 240 135 242 120 246" />
+          </g>
+          <g fill="url(#goldG)" stroke="var(--gl)" stroke-width="1.3">
+            <ellipse cx="102" cy="238" rx="17" ry="7" />
+            <ellipse cx="138" cy="238" rx="17" ry="7" />
+          </g>
+          <circle cx="102" cy="238" r="2.4" fill="#b5121b" /><circle cx="138"
+            cy="238" r="2.4" fill="#b5121b" />
+
+          <!-- necklace -->
+          <path d="M88 138 Q120 172 152 138" fill="none" stroke="var(--gl)"
+            stroke-width="3.2" stroke-linecap="round" />
+          <g fill="#b5121b" stroke="var(--gl)" stroke-width=".8">
+            <circle cx="98" cy="150" r="2.6" /><circle cx="110" cy="158"
+              r="2.6" /><circle cx="120" cy="161" r="3" /><circle cx="130"
+              cy="158" r="2.6" /><circle cx="142" cy="150" r="2.6" />
+          </g>
+
+          <!-- upper left arm + axe -->
+          <g stroke-linecap="round" fill="none">
+            <path d="M80 138 C46 152 20 130 20 100" stroke="var(--gl)"
+              stroke-width="15" />
+            <path d="M80 138 C46 152 20 130 20 100" stroke="url(#goldG)"
+              stroke-width="11.5" />
+            <path d="M160 138 C194 152 220 130 220 100" stroke="var(--gl)"
+              stroke-width="15" />
+            <path d="M160 138 C194 152 220 130 220 100" stroke="url(#goldG)"
+              stroke-width="11.5" />
+          </g>
+          <circle cx="20" cy="96" r="8" fill="url(#goldG)" stroke="var(--gl)"
+            stroke-width="1.3" />
+          <path d="M20 92 L14 58" stroke="var(--gl)" stroke-width="2.4"
+            stroke-linecap="round" />
+          <path d="M14 58 C2 56 0 68 10 72 C16 68 18 62 14 58Z" fill="#f8dc90"
+            stroke="var(--gl)" stroke-width="1.2" />
+          <!-- upper right arm + lotus -->
+          <circle cx="220" cy="96" r="8" fill="url(#goldG)" stroke="var(--gl)"
+            stroke-width="1.3" />
+          <path d="M220 90 L220 74" stroke="var(--gl)" stroke-width="2.4"
+            stroke-linecap="round" />
+          <g fill="#fbd7d2" stroke="var(--gl)" stroke-width="1.1"
+            stroke-linejoin="round">
+            <path d="M220 74 C210 70 208 58 216 52 C218 60 220 66 220 74Z" />
+            <path d="M220 74 C230 70 232 58 224 52 C222 60 220 66 220 74Z" />
+            <path d="M220 74 C214 68 214 52 220 46 C226 52 226 68 220 74Z"
+              fill="#e8647a" />
+          </g>
+
+          <!-- lower left arm + modak bowl -->
+          <g stroke-linecap="round" fill="none">
+            <path d="M84 158 C60 168 52 192 64 212" stroke="var(--gl)"
+              stroke-width="15" />
+            <path d="M84 158 C60 168 52 192 64 212" stroke="url(#goldG)"
+              stroke-width="11.5" />
+          </g>
+          <ellipse cx="68" cy="214" rx="12" ry="7" fill="url(#goldG)"
+            stroke="var(--gl)" stroke-width="1.3" />
+          <path d="M48 200 Q68 222 90 200 Z" fill="#f8dc90" stroke="var(--gl)"
+            stroke-width="1.4" stroke-linejoin="round" />
+          <g fill="#b5121b" stroke="var(--gl)" stroke-width="1">
+            <path d="M56 199 C54 190 60 186 62 184 C66 188 68 194 66 199Z" />
+            <path d="M68 199 C66 188 72 184 74 181 C78 185 80 192 78 199Z" />
+            <path d="M80 199 C80 192 84 188 86 187 C89 191 90 195 88 199Z" />
+          </g>
+
+          <!-- lower right arm + abhaya mudra -->
+          <g stroke-linecap="round" fill="none">
+            <path d="M156 158 C180 164 190 182 188 196" stroke="var(--gl)"
+              stroke-width="15" />
+            <path d="M156 158 C180 164 190 182 188 196" stroke="url(#goldG)"
+              stroke-width="11.5" />
+          </g>
+          <g fill="url(#goldG)" stroke="var(--gl)" stroke-width="1.3"
+            stroke-linejoin="round">
+            <ellipse cx="190" cy="178" rx="11" ry="14" />
+          </g>
+          <circle cx="190" cy="181" r="4.6" fill="#b5121b" />
+          <g stroke="var(--gl)" stroke-width="1" stroke-linecap="round"
+            opacity=".8">
+            <path d="M182 168 L181 160" /><path d="M187 165 L187 156" /><path
+              d="M193 165 L194 156" /><path d="M198 168 L200 160" />
+          </g>
+
+          <!-- head -->
+          <ellipse cx="120" cy="104" rx="40" ry="44" fill="url(#goldG)"
+            stroke="var(--gl)" stroke-width="1.6" />
+          <!-- crown -->
+          <path
+            d="M82 68 L86 34 L102 52 L120 20 L138 52 L154 34 L158 68 Q120 58 82 68Z"
+            fill="url(#goldG)" stroke="var(--gl)" stroke-width="1.5"
+            stroke-linejoin="round" />
+          <path d="M85 64 Q120 54 155 64" fill="none" stroke="var(--gl)"
+            stroke-width="1.3" />
+          <circle cx="120" cy="42" r="5.4" fill="#b5121b" stroke="var(--gl)"
+            stroke-width="1" />
+          <circle cx="98" cy="57" r="2.6" fill="#b5121b" /><circle cx="142"
+            cy="57" r="2.6" fill="#b5121b" />
+          <!-- tilak -->
+          <path d="M104 70 Q106 86 120 90 Q134 86 136 70" fill="none"
+            stroke="#b5121b" stroke-width="3" stroke-linecap="round" />
+          <path d="M120 66 L120 82" stroke="#b5121b" stroke-width="3"
+            stroke-linecap="round" />
+          <!-- eyes -->
+          <path d="M90 100 Q99 93 108 100 Q99 106 90 100Z" fill="#fff6dc"
+            stroke="#3b0a10" stroke-width="1" />
+          <path d="M132 100 Q141 93 150 100 Q141 106 132 100Z" fill="#fff6dc"
+            stroke="#3b0a10" stroke-width="1" />
+          <circle cx="99" cy="100" r="2.7" fill="#3b0a10" /><circle cx="141"
+            cy="100" r="2.7" fill="#3b0a10" />
+          <path d="M88 93 Q99 84 110 92" fill="none" stroke="var(--gl)"
+            stroke-width="2" stroke-linecap="round" />
+          <path d="M130 92 Q141 84 152 93" fill="none" stroke="var(--gl)"
+            stroke-width="2" stroke-linecap="round" />
+          <!-- tusks -->
+          <path d="M134 124 C150 128 156 142 150 158 C146 146 138 138 128 136 Z"
+            fill="#fff3d1" stroke="var(--gl)" stroke-width="1" />
+          <path d="M106 124 C98 128 93 136 95 146 C99 140 103 136 110 134 Z"
+            fill="#fff3d1" stroke="var(--gl)" stroke-width="1" />
+          <!-- trunk curling toward the modak -->
+          <path d="M120 108 C121 134 121 150 112 164 C104 176 88 174 90 160"
+            fill="none" stroke="var(--gl)" stroke-width="22"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M120 108 C121 134 121 150 112 164 C104 176 88 174 90 160"
+            fill="none" stroke="url(#goldG)" stroke-width="17.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <g fill="none" stroke="var(--gl)" stroke-width="1.1" opacity=".75"
+            stroke-linecap="round">
+            <path d="M112 120 Q120 125 128 120" /><path
+              d="M112 132 Q120 137 128 132" /><path
+              d="M111 144 Q119 149 127 144" />
+          </g>
+        </symbol>
+      </defs>
+    </svg>
+
+    <main class="stage">
+      <div class="card" id="card">
+        <div class="paper" id="paper">
+          <section class="inside" id="inside" aria-live="polite">
+            <i class="frame"></i>
+            <svg class="band t" viewBox="0 0 100 5.2" preserveAspectRatio="none"
+              aria-hidden="true"><rect width="100" height="5.2"
+                fill="url(#dhakaI)" /></svg>
+            <svg class="band b" viewBox="0 0 100 5.2" preserveAspectRatio="none"
+              aria-hidden="true"><rect width="100" height="5.2"
+                fill="url(#dhakaI)" /></svg>
+            <svg class="corner tl" aria-hidden="true"><use
+                href="#corner" /></svg>
+            <svg class="corner tr" aria-hidden="true"
+              style="transform:scaleX(-1)"><use href="#corner" /></svg>
+            <svg class="corner bl" aria-hidden="true"
+              style="transform:scaleY(-1)"><use href="#corner" /></svg>
+            <svg class="corner br" aria-hidden="true"
+              style="transform:scale(-1,-1)"><use href="#corner" /></svg>
+            <div class="copy" id="copy"></div>
+          </section>
+        </div>
+
+        <div class="door door-l"><div class="face front"></div><div
+            class="face back"></div></div>
+        <div class="door door-r"><div class="face front"></div><div
+            class="face back"></div></div>
+        <i class="seam"></i>
+        <button class="seal" id="seal" type="button"
+          aria-label="Open the invitation / निमन्त्रणा खोल्नुहोस्">ॐ</button>
+      </div>
+
+      <p class="hint" id="hint">निमन्त्रणा खोल्न ॐ मा थिच्नुहोस्<span>Tap the
+          seal to open</span></p>
+
+      <div class="controls" id="controls">
+        <button class="chip" type="button" id="replay">↻ Write again</button>
+      </div>
+    </main>
+
+    <template id="coverT">
+      <div class="cover">
+        <i class="frame"></i>
+        <svg class="band t" viewBox="0 0 100 5.2" preserveAspectRatio="none"
+          aria-hidden="true"><rect width="100" height="5.2"
+            fill="url(#dhakaR)" /></svg>
+        <svg class="band b" viewBox="0 0 100 5.2" preserveAspectRatio="none"
+          aria-hidden="true"><rect width="100" height="5.2"
+            fill="url(#dhakaR)" /></svg>
+        <svg class="corner tl" aria-hidden="true"><use href="#corner" /></svg>
+        <svg class="corner tr" aria-hidden="true"><use href="#corner" /></svg>
+        <svg class="corner bl" aria-hidden="true"><use href="#corner" /></svg>
+        <svg class="corner br" aria-hidden="true"><use href="#corner" /></svg>
+        <svg class="ganesh" aria-hidden="true"><use href="#ganesh" /></svg>
+        <div class="nama">॥ श्री गणेशाय नमः ॥</div>
+        <div class="mantra">
+          <span class="m1">ॐ मङ्गलं भगवान् विष्णुः</span>
+          <span class="m2">मङ्गलं गरुडध्वजः ।</span>
+          <span class="m2">मङ्गलं पुण्डरीकाक्षो</span>
+          <span class="m2">मङ्गलायतनो हरिः ॥</span>
+        </div>
+        <div class="title">शुभ विवाह</div>
+        <div class="sub">Wedding Invitation</div>
+      </div>
+    </template>
+
+    <script>
+  /* ============ EDIT THE DETAILS HERE ============ */
+  const DATA = {
+    ne: [
+      { k: 'ganesh' },
+      { k: 'small', t: '॥ श्री गणेशाय नमः ॥' },
+      { k: 'title', t: 'हार्दिक निमन्त्रणा' },
+      { k: 'orn' },
+      { k: 'p', t: 'वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ' },
+      { k: 'p', t: 'निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा' },
+      { k: 'orn' },
+      { k: 'role', t: 'श्रीमती लता आचार्यको नाति तथा श्री सुशील कुमार आचार्य र श्रीमती लक्ष्मी आचार्य बराल का चिरञ्जीवी सुपुत्र' },
+      { k: 'name', t: 'रजत आचार्य' },
+      { k: 'with', t: 'को' },
+      { k: 'role', t: 'श्रीमती गंगा देवी भट्टराईको नातिनी तथा श्री डिल्लीराम भट्टराई र श्रीमती कल्पना रेग्मी भट्टराईकी आयुष्मती सुपुत्री ' },
+      { k: 'name', t: 'स्वस्तिका भट्टराई' },
+      { k: 'with', t: 'सँग सुसम्पन्न हुने' },
+      { k: 'orn' }, { k: 'name', t: 'शुभ विवाह' },{ k: 'orn' },
+      { k: 'p', t: ' समारोहमा उपस्थित भई वर–वधूलाई शुभाशीर्वाद प्रदान गरिदिनुहुन यहाँको गरिमामय उपस्थितिका लागि हार्दिक आमन्त्रण गर्दछौँ' },
+      { k: 'rows', items: [
+        ['मिति', '2026 November 25, Wednesday'],
+        ['जन्ती प्रस्थान', '10 : 00 A.M.'],
+        ['भोज स्थल', 'Bubbly Moments Studios'],
+        ['भोज', '6 : 30 P.M.'],
+         ] },
+      { k: 'orn' },
+      { k: 'small', t: 'दर्शनाभिलाषी' },
+      { k: 'big', t: 'समस्त परिवारजन' },
+      { k: 'small', t: 'सम्पर्क : +1 519 643 6844' },
+      { k: 'small', t: 'सम्पर्क : +1 226 886 0115' },
+      { k: 'small', t: '॥ शुभम् भवतु ॥' }
+    ]
+  };
+  /* ================================================= */
+
+  const $ = (s, r = document) => r.querySelector(s);
+  const card = $('#card'), inside = $('#inside'), copy = $('#copy'), seal = $('#seal');
+  const controls = $('#controls'), hint = $('#hint');
+  let lang = 'ne', timers = [], userScrolled = false, isOpen = false;
+  const STEP = 0.075, BLOCK_GAP = 0.28;
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+  // clone the cover into both doors
+  const tpl = $('#coverT');
+  document.querySelectorAll('.door .face.front').forEach(f => f.appendChild(tpl.content.cloneNode(true)));
+
+  function words(text, ctx) {
+    return text.split(' ').map(w => {
+      const d = ctx.t.toFixed(2); ctx.t += STEP;
+      return '<span class="w" style="--d:' + d + 's">' + esc(w) + '</span>';
+    }).join(' ');
+  }
+
+  const ORN = d => '<svg class="orn" viewBox="0 0 200 20" aria-hidden="true" style="--d:' + d + 's">' +
+    '<path pathLength="1" d="M4 10 H84 M84 10 q8 -8 16 0 q-8 8 -16 0"/>' +
+    '<path pathLength="1" d="M196 10 H116 M116 10 q-8 -8 -16 0 q8 8 16 0" style="animation-delay:' + d + 's"/>' +
+    '<circle class="dot" cx="100" cy="10" r="2.4" style="animation-delay:' + (+d + .7).toFixed(2) + 's"/></svg>';
+
+  function render() {
+    const ctx = { t: 0.5 };
+    let html = '';
+    DATA[lang].forEach(b => {
+      const start = ctx.t.toFixed(2);
+      let inner = '';
+      switch (b.k) {
+        case 'ganesh': inner = '<svg class="g-small" viewBox="0 0 240 272" aria-hidden="true"><use href="#ganesh"/></svg>'; ctx.t += 0.5; break;
+        case 'orn': inner = ORN(ctx.t.toFixed(2)); ctx.t += 0.5; break;
+        case 'title': inner = '<div class="t-title">' + words(b.t, ctx) + '</div>'; ctx.t += .2; break;
+        case 'small': inner = '<div class="t-small">' + words(b.t, ctx) + '</div>'; break;
+        case 'p': inner = '<div class="t-p">' + words(b.t, ctx) + '</div>'; break;
+        case 'role': inner = '<div class="t-role">' + words(b.t, ctx) + '</div>'; break;
+        case 'name': inner = '<div class="t-name">' + words(b.t, ctx) + '</div>'; ctx.t += .15; break;
+        case 'with': inner = '<div class="t-with">' + words(b.t, ctx) + '</div>'; break;
+        case 'big': inner = '<div class="t-big">' + words(b.t, ctx) + '</div>'; break;
+        case 'rows':
+          inner = '<div class="rows">' + b.items.map(([k, v]) => {
+            const kk = words(k, ctx), vv = words(v, ctx); ctx.t += .1;
+            return '<div class="row"><div class="k">' + kk + '</div><div class="v">' + vv + '</div></div>';
+          }).join('') + '</div>';
+          break;
+      }
+      html += '<div class="blk" data-t="' + start + '">' + inner + '</div>';
+      ctx.t += BLOCK_GAP;
+    });
+    copy.className = 'copy lang-' + lang;
+    copy.innerHTML = html;
+  }
+
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+  function startWriting() {
+    clearTimers();
+    inside.classList.remove('writing', 'done');
+    render();
+    void inside.offsetWidth; // restart animations
+    inside.classList.add('writing');
+    const total = Math.max(...[...copy.querySelectorAll('.w')].map(w => parseFloat(w.style.getPropertyValue('--d')))) + 0.8;
+    // follow the pen down the page, unless the reader scrolls on their own
+    copy.querySelectorAll('.blk').forEach(b => {
+      const t = parseFloat(b.dataset.t) * 1000 + 300;
+      timers.push(setTimeout(() => {
+        if (userScrolled) return;
+        const r = b.getBoundingClientRect();
+        if (r.bottom > innerHeight - 90) window.scrollTo({ top: scrollY + r.bottom - innerHeight + 140, behavior: 'smooth' });
+      }, t));
+    });
+    timers.push(setTimeout(() => { inside.classList.add('done'); controls.classList.add('show'); fit(); }, total * 1000));
+    controls.classList.remove('show');
+  }
+
+  function fit() { card.style.height = Math.max(inside.offsetHeight, card.offsetWidth * 1.48) + 'px'; }
+
+  function openCard() {
+    if (isOpen) return;
+    isOpen = true;
+    card.classList.add('opening');
+    hint.style.opacity = 0;
+    requestAnimationFrame(() => card.classList.add('open'));
+    timers.push(setTimeout(() => {
+      render();
+      card.style.height = Math.max(inside.offsetHeight, card.offsetWidth * 1.48) + 'px';
+    }, 100));
+    timers.push(setTimeout(startWriting, 900));
+    timers.push(setTimeout(() => { hint.hidden = true; }, 700));
+    timers.push(setTimeout(() => { document.querySelectorAll('.door, .seam, .seal').forEach(e => e.style.display = 'none'); }, 2400));
+  }
+
+  seal.addEventListener('click', openCard);
+  card.addEventListener('click', e => { if (!isOpen && e.target.closest('.door')) openCard(); });
+  // tapping the page while it writes finishes it at once
+  inside.addEventListener('click', () => {
+    if (inside.classList.contains('writing') && !inside.classList.contains('done')) {
+      clearTimers(); inside.classList.add('done'); controls.classList.add('show'); fit();
+    }
+  });
+  ['wheel', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, () => { userScrolled = true; }, { passive: true }));
+
+  document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => {
+    lang = btn.dataset.lang;
+    document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    userScrolled = true; scrollTo({ top: 0, behavior: 'smooth' });
+    startWriting(); setTimeout(fit, 60);
+  }));
+  $('#replay').addEventListener('click', () => { userScrolled = false; scrollTo({ top: 0, behavior: 'smooth' }); startWriting(); });
+  addEventListener('resize', () => { if (isOpen) fit(); });
+
+  // first paint: card height follows the opened page only after opening
+  render();
+</script>
+
+  </body></html>
